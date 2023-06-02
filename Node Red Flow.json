@@ -6,8 +6,7 @@
 "info": ""
 },{
 "id": "918938e7.f8b628",
-"type": "e
--mail in",
+"type": "e-mail in",
 "z": "1fe36a6f.268a46",
 "name": "",
 "protocol": "IMAP",
@@ -35,7 +34,6 @@
 "tosidebar": true,
 "console": false,
 "tostatus": false,
-21 | P a g e
 "complete": "payload.devices.length",
 "targetType": "msg",
 "x": 1175.5,
@@ -80,7 +78,6 @@
 "z": "1fe36a6f.268a46",
 "name": "",
 "active": true,
-22 | P a g e
 "tosidebar": true,
 "console": false,
 "tostatus": false,
@@ -98,9 +95,7 @@
 "hdrin": "",
 "hdrout": "",
 "multi": "one",
-"ret": "
-\
-\n",
+"ret": "\\n",
 "temp": "",
 "skip": "0",
 "x": 596.5,
@@ -124,17 +119,11 @@
 []
 ]
 },{
-23 | P a g e
 "id": "b59e3658.aff9a8",
 "type": "function",
 "z": "1fe36a6f.268a46",
 "name": "",
-"func": "//payload={\"payload\":JSON.stringify(msg.attachments)};\n//hopp = 
-msg.attachments(0);\n//payload={\"payload\":JSON.stringify(msg.paylod)};\n//payload = 
-msg.attachments.devices;\n//msg.payload = payload\nvar data = {\n key: 'value'\n};\nvar 
-fileName = 'myData.json';\n\n// Create a blob of the data\nvar fileToSave = new 
-Blob([JSON.stringify(data)], {\n type: 'application/json',\n name: fileName\n});\n\n// Save 
-the file\nsaveAs(fileToSave, fileName);\nreturn msg;",
+"func": "//payload={\"payload\":JSON.stringify(msg.attachments)};\n//hopp = msg.attachments(0);\n//payload={\"payload\":JSON.stringify(msg.paylod)};\n//payload = msg.attachments.devices;\n//msg.payload = payload\nvar data = {\n key: 'value'\n};\nvar fileName = 'myData.json';\n\n// Create a blob of the data\nvar fileToSave = new Blob([JSON.stringify(data)], {\n type: 'application/json',\n name: fileName\n});\n\n// Save the file\nsaveAs(fileToSave, fileName);\nreturn msg;",
 "outputs": 1,
 "noerr": 0,
 "x": 728.5,
@@ -169,7 +158,6 @@ the file\nsaveAs(fileToSave, fileName);\nreturn msg;",
 "once": false,
 "onceDelay": 0.1,
 "x": 107.5,
-24 | P a g e
 "y": 102,
 "wires": [
 []
@@ -212,7 +200,6 @@ the file\nsaveAs(fileToSave, fileName);\nreturn msg;",
 "removeOlder": 1,
 "removeOlderPoints": "",
 "removeOlderUnit": "3600",
-25 | P a g e
 "cutout": 0,
 "useOneColor": false,
 "colors": [
@@ -255,7 +242,6 @@ the file\nsaveAs(fileToSave, fileName);\nreturn msg;",
 "topic": "",
 "payload": "5",
 "payloadType": "num",
-26 | P a g e
 "repeat": "",
 "crontab": "",
 "once": false,
@@ -297,7 +283,6 @@ the file\nsaveAs(fileToSave, fileName);\nreturn msg;",
 "y": 278,
 "wires": [
 []
-27 | P a g e
 ]
 },{
 "id": "ee0191f9.0f2ae",
@@ -339,7 +324,6 @@ the file\nsaveAs(fileToSave, fileName);\nreturn msg;",
 "z": "1fe36a6f.268a46",
 "name": "",
 "topic": "",
-28 | P a g e
 "payload": "2",
 "payloadType": "num",
 "repeat": "",
@@ -384,7 +368,6 @@ the file\nsaveAs(fileToSave, fileName);\nreturn msg;",
 [
 "a0d68429.bdca48"
 ]
-29 | P a g e
 ]
 },
 {
@@ -392,9 +375,7 @@ the file\nsaveAs(fileToSave, fileName);\nreturn msg;",
 "type": "function",
 "z": "1fe36a6f.268a46",
 "name": "Up State Count",
-"func": "var i;\nvar count = 0\nfor (i = 0; i < msg.payload.devices.length; i++) { 
-\n if(msg.payload.devices[i].state == \"UP\")\n count += 1;\n}\nmsg.payload = count;\nreturn 
-msg;",
+"func": "var i;\nvar count = 0\nfor (i = 0; i < msg.payload.devices.length; i++) { \n if(msg.payload.devices[i].state == \"UP\")\n count += 1;\n}\nmsg.payload = count;\nreturn msg;",
 "outputs": 1,
 "noerr": 0,
 "x": 654.5,
@@ -429,7 +410,6 @@ msg;",
 "collapse": false
 },
 {
-30 | P a g e
 "id": "778a27f0.d11f18",
 "type": "ui_tab",
 "z": "",
