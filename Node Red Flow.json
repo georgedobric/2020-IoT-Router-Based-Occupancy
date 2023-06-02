@@ -1,0 +1,441 @@
+[ {
+"id": "1fe36a6f.268a46",
+"type": "tab",
+"label": "Flow 4",
+"disabled": false,
+"info": ""
+},{
+"id": "918938e7.f8b628",
+"type": "e
+-mail in",
+"z": "1fe36a6f.268a46",
+"name": "",
+"protocol": "IMAP",
+"server": "imap.gmail.com",
+"useSSL": true,
+"port": "993",
+"box": "INBOX",
+"disposition": "Read",
+"criteria": "FLAGGED",
+"repeat": "3",
+"fetch": "auto",
+"inputs": 0,
+"x": 101.5,
+"y": 561,
+"wires": [ [
+"1c07bb38.8c5005"
+]
+]
+},{
+"id": "fb904cbd.78b7e",
+"type": "debug",
+"z": "1fe36a6f.268a46",
+"name": "",
+"active": true,
+"tosidebar": true,
+"console": false,
+"tostatus": false,
+21 | P a g e
+"complete": "payload.devices.length",
+"targetType": "msg",
+"x": 1175.5,
+"y": 439,
+"wires": []
+},
+{
+"id": "a0d68429.bdca48",
+"type": "json",
+"z": "1fe36a6f.268a46",
+"name": "",
+"property": "payload",
+"action": "obj",
+"pretty": true,
+"x": 476.5,
+"y": 560,
+"wires": [
+[
+"2438a8fb.aea508"
+]
+]
+},
+{
+"id": "a24d4e1f.c41c2",
+"type": "file in",
+"z": "1fe36a6f.268a46",
+"name": "",
+"filename": "Aton_2020_04_06_4_39_p.m..json - Mousepad",
+"format": "",
+"chunk": false,
+"sendError": false,
+"encoding": "none",
+"x": 1100.5,
+"y": 66,
+"wires": [
+[]
+]
+},
+{
+"id": "932a90ee.8e5a2",
+"type": "debug",
+"z": "1fe36a6f.268a46",
+"name": "",
+"active": true,
+22 | P a g e
+"tosidebar": true,
+"console": false,
+"tostatus": false,
+"complete": "attachments.0.device.length",
+"targetType": "msg",
+"x": 1168.5,
+"y": 404,
+"wires": []
+},{
+"id": "fc6ddc89.fea5c",
+"type": "csv",
+"z": "1fe36a6f.268a46",
+"name": "",
+"sep": ",",
+"hdrin": "",
+"hdrout": "",
+"multi": "one",
+"ret": "
+\
+\n",
+"temp": "",
+"skip": "0",
+"x": 596.5,
+"y": 738,
+"wires": [
+[]
+]
+},{
+"id": "6fae8a51.725a64",
+"type": "html",
+"z": "1fe36a6f.268a46",
+"name": "",
+"property": "attachments.0",
+"outproperty": "payload",
+"tag": "",
+"ret": "html",
+"as": "single",
+"x": 599.5,
+"y": 774,
+"wires": [
+[]
+]
+},{
+23 | P a g e
+"id": "b59e3658.aff9a8",
+"type": "function",
+"z": "1fe36a6f.268a46",
+"name": "",
+"func": "//payload={\"payload\":JSON.stringify(msg.attachments)};\n//hopp = 
+msg.attachments(0);\n//payload={\"payload\":JSON.stringify(msg.paylod)};\n//payload = 
+msg.attachments.devices;\n//msg.payload = payload\nvar data = {\n key: 'value'\n};\nvar 
+fileName = 'myData.json';\n\n// Create a blob of the data\nvar fileToSave = new 
+Blob([JSON.stringify(data)], {\n type: 'application/json',\n name: fileName\n});\n\n// Save 
+the file\nsaveAs(fileToSave, fileName);\nreturn msg;",
+"outputs": 1,
+"noerr": 0,
+"x": 728.5,
+"y": 772,
+"wires": [
+[]
+]
+},
+{
+"id": "d13491bd.914b2",
+"type": "influxdb out",
+"z": "1fe36a6f.268a46",
+"influxdb": "6bc31684.c5f6f8",
+"name": "",
+"measurement": "influx3",
+"precision": "",
+"retentionPolicy": "",
+"x": 903.5,
+"y": 515,
+"wires": []
+},
+{
+"id": "c2d83147.7bddb",
+"type": "inject",
+"z": "1fe36a6f.268a46",
+"name": "tempo",
+"topic": "",
+"payload": "7",
+"payloadType": "str",
+"repeat": "",
+"crontab": "",
+"once": false,
+"onceDelay": 0.1,
+"x": 107.5,
+24 | P a g e
+"y": 102,
+"wires": [
+[]
+]
+},{
+"id": "304a284c.1e49d8",
+"type": "inject",
+"z": "1fe36a6f.268a46",
+"name": "",
+"topic": "",
+"payload": "8",
+"payloadType": "num",
+"repeat": "",
+"crontab": "",
+"once": false,
+"onceDelay": 0.1,
+"x": 79.5,
+"y": 193,
+"wires": [
+[]
+]
+},{
+"id": "eec7df01.fa088",
+"type": "ui_chart",
+"z": "1fe36a6f.268a46",
+"name": "",
+"group": "68fc06fa.480528",
+"order": 2,
+"width": 0,
+"height": 0,
+"label": "chart",
+"chartType": "line",
+"legend": "false",
+"xformat": "HH:mm:ss",
+"interpolate": "linear",
+"nodata": "",
+"dot": false,
+"ymin": "",
+"ymax": "",
+"removeOlder": 1,
+"removeOlderPoints": "",
+"removeOlderUnit": "3600",
+25 | P a g e
+"cutout": 0,
+"useOneColor": false,
+"colors": [
+"#1f77b4",
+"#aec7e8",
+"#ff7f0e",
+"#2ca02c",
+"#98df8a",
+"#d62728",
+"#ff9896",
+"#9467bd",
+"#c5b0d5"
+],
+"useOldStyle": false,
+"outputs": 1,
+"x": 728.5,
+"y": 730,
+"wires": [
+[]
+]
+},{
+"id": "dea5b5f1.2410c8",
+"type": "debug",
+"z": "1fe36a6f.268a46",
+"name": "",
+"active": true,
+"tosidebar": true,
+"console": false,
+"tostatus": false,
+"complete": "payload",
+"targetType": "msg",
+"x": 851.5,
+"y": 560,
+"wires": []
+},{
+"id": "c781fb20.ecadb8",
+"type": "inject",
+"z": "1fe36a6f.268a46",
+"name": "",
+"topic": "",
+"payload": "5",
+"payloadType": "num",
+26 | P a g e
+"repeat": "",
+"crontab": "",
+"once": false,
+"onceDelay": 0.1,
+"x": 82,
+"y": 311,
+"wires": [
+[]
+]
+},{
+"id": "6fe0c14c.919f",
+"type": "inject",
+"z": "1fe36a6f.268a46",
+"name": "",
+"topic": "",
+"payload": "7", "payloadType": "num",
+"repeat": "",
+"crontab": "",
+"once": false,
+"onceDelay": 0.1,
+"x": 84,
+"y": 242,
+"wires": [
+[]
+]
+},{
+"id": "7d9fcfac.7fa4",
+"type": "inject",
+"z": "1fe36a6f.268a46",
+"name": "",
+"topic": "",
+"payload": "6",
+"payloadType": "num",
+"repeat": "",
+"crontab": "",
+"once": false,
+"onceDelay": 0.1,
+"x": 88,
+"y": 278,
+"wires": [
+[]
+27 | P a g e
+]
+},{
+"id": "ee0191f9.0f2ae",
+"type": "inject",
+"z": "1fe36a6f.268a46",
+"name": "",
+"topic": "",
+"payload": "4",
+"payloadType": "num",
+"repeat": "",
+"crontab": "",
+"once": false,
+"onceDelay": 0.1,
+"x": 85,
+"y": 347,
+"wires": [
+[]
+]
+},{
+"id": "475e3baa.38f9d4",
+"type": "inject",
+"z": "1fe36a6f.268a46",
+"name": "",
+"topic": "",
+"payload": "3",
+"payloadType": "num",
+"repeat": "",
+"crontab": "",
+"once": false,
+"onceDelay": 0.1,
+"x": 78,
+"y": 381,
+"wires": [
+[]
+]
+},{
+"id": "bbba6cd5.e3d4c",
+"type": "inject",
+"z": "1fe36a6f.268a46",
+"name": "",
+"topic": "",
+28 | P a g e
+"payload": "2",
+"payloadType": "num",
+"repeat": "",
+"crontab": "",
+"once": false,
+"onceDelay": 0.1,
+"x": 82,
+"y": 419,
+"wires": [
+[]
+]
+},
+{
+"id": "eb691d8e.05d66",
+"type": "inject",
+"z": "1fe36a6f.268a46",
+"name": "",
+"topic": "",
+"payload": "1",
+"payloadType": "num",
+"repeat": "",
+"crontab": "",
+"once": false,
+"onceDelay": 0.1,
+"x": 81,
+"y": 452,
+"wires": [
+[]
+]
+},
+{
+"id": "1c07bb38.8c5005",
+"type": "function",
+"z": "1fe36a6f.268a46",
+"name": "Buffer to String",
+"func": "msg.payload = msg.attachments[0].content.toString('utf-8');\nreturn msg;",
+"outputs": 1,
+"noerr": 0,
+"x": 319.5,
+"y": 561,
+"wires": [
+[
+"a0d68429.bdca48"
+]
+29 | P a g e
+]
+},
+{
+"id": "2438a8fb.aea508",
+"type": "function",
+"z": "1fe36a6f.268a46",
+"name": "Up State Count",
+"func": "var i;\nvar count = 0\nfor (i = 0; i < msg.payload.devices.length; i++) { 
+\n if(msg.payload.devices[i].state == \"UP\")\n count += 1;\n}\nmsg.payload = count;\nreturn 
+msg;",
+"outputs": 1,
+"noerr": 0,
+"x": 654.5,
+"y": 560,
+"wires": [
+[
+"dea5b5f1.2410c8",
+"d13491bd.914b2"
+]
+]
+},
+{
+"id": "6bc31684.c5f6f8",
+"type": "influxdb",
+"z": "",
+"hostname": "127.0.0.1",
+"port": "8086",
+"protocol": "http",
+"database": "influx3",
+"name": "",
+"usetls": false,
+"tls": ""
+},
+{
+"id": "68fc06fa.480528",
+"type": "ui_group",
+"z": "",
+"name": "templog",
+"tab": "778a27f0.d11f18",
+"disp": true,
+"width": "6",
+"collapse": false
+},
+{
+30 | P a g e
+"id": "778a27f0.d11f18",
+"type": "ui_tab",
+"z": "",
+"name": "temp",
+"icon": "dashboard",
+"disabled": false,
+"hidden": false
+}
+]
